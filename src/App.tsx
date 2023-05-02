@@ -1,15 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Favorites from './features/favorites/Favorites';
+import React, { useEffect } from "react";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+
+// import components
+import Navbar from "./components/Navbar";
+import { useSelector } from "react-redux";
+import Home from "./pages/Home";
+import SingleBook from "./pages/SingleBook";
+import Error from "./pages/Error";
+import Favorites from "./pages/Favorites";
+//import Favorites from './features/favorites/Favorites';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Favorites /> 
-      </header>
+   <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="books/:id" element={<SingleBook />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
