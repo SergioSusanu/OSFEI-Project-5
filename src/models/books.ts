@@ -21,8 +21,6 @@ export interface GoogleBook{
         },
         description:string | undefined;
     };
-    
-
 }
 
 export interface GoogleBookCollection {

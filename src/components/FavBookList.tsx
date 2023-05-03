@@ -14,7 +14,7 @@ const FavBookList:FC = () => {
       <h2 className="section-title">Favorite Books</h2>
       <div className="books-center">
         {books.map((book) => {
-          return <BookCard key={book.id} {...book} />;
+          return <BookCard key={book.id} book={book} />;
         })}
       </div>
     </section>

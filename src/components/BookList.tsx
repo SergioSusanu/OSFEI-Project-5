@@ -33,7 +33,7 @@ const BookList:FC = () => {
           return (
             <BookCard
               key={book.id}
-              {...localBook}
+              book={localBook}
             />
           );
           
