@@ -14,12 +14,12 @@ const SearchForm:FC = () => {
   };
 
   const handleSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
-      clearTimeout(timer);
-      // Wait for X ms 
+    if (e.target.value) {
+      clearTimeout(timer); 
       timer = setTimeout(() => {
          dispatch(setSearchTerm(e.target.value))
       }, 700);
-
+    }
   };
 
   useEffect(() => {

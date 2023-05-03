@@ -10,6 +10,7 @@ import Error from "./pages/Error";
 import Favorites from "./pages/Favorites";
 import { useAppSelector } from "./app/hooks";
 import { selectFavorites } from "./features/favorites/favoritesSlice";
+import { log } from "console";
 //import Favorites from './features/favorites/Favorites';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     const favorites = useAppSelector(selectFavorites)
 
   useEffect(()=>{
-    localStorage.setItem('favorites', JSON.stringify(favorites))
+    favorites && localStorage.setItem('favorites', JSON.stringify(favorites))
   },[favorites])
 
   return (

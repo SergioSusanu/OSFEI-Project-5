@@ -9,9 +9,8 @@ const fetchFavoritesFromLocalStorage = ():BookCollection => {
   return {books:undefined}
 }
 
-const initialState: BookCollection = {
-    books: fetchFavoritesFromLocalStorage().books
-}
+const initialState: BookCollection = fetchFavoritesFromLocalStorage()
+
 
 export const favoritesSlice = createSlice({
   name: 'favorites',
