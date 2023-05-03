@@ -4,7 +4,7 @@ import { localBook, BookCollection } from '../../models/books';
 
 const fetchFavoritesFromLocalStorage = ():BookCollection => {
   let list = localStorage.getItem('favorites')
-  if (list) return JSON.parse(list)
+  if (list && typeof list !== 'undefined') return JSON.parse(list)
   
   return {books:undefined}
 }
@@ -19,7 +19,9 @@ export const favoritesSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     addFavorite: (state, action:PayloadAction<localBook>) => {
-      state.books && state.books.push(action.payload);
+      if (typeof state.books === 'undefined'){
+        state.books = [action.payload]
+      } else state.books.push(action.payload);
     },
     removeFromFavorite: (state, action:PayloadAction<string>) => {
       if (state.books) {
