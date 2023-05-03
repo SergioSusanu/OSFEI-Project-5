@@ -1,36 +1,37 @@
 import React, { useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
 import { setSearchTerm } from "../features/searchSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { RootState } from "../app/store";
 
 const SearchForm = () => {
+  const activeSearchTerm = useAppSelector((state:RootState)=>state.search.searchTerm)
+  const dispatch = useAppDispatch()
+  const searchInput = useRef<HTMLInputElement | null>(null)
+  let timer: NodeJS.Timeout;
 
-//   const activeSearchTerm = useSelector((state) => state.search.searchTerm)
-//   const dispatch = useDispatch()
-//   const searchInput = useRef()
-//   let timer;
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//   };
+  const handleSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
+      clearTimeout(timer);
+      // Wait for X ms 
+      timer = setTimeout(() => {
+         dispatch(setSearchTerm(e.target.value))
+      }, 700);
 
-//   const handleSearch = (e) => {
-//       clearTimeout(timer);
-//       // Wait for X ms 
-//       timer = setTimeout(() => {
-//          dispatch(setSearchTerm(e.target.value))
-//       }, 700);
+  };
 
-//   };
-
-//   useEffect(() => {
-//     searchInput.current.focus();
-//     searchInput.current.value = activeSearchTerm
-//   });
+  useEffect(() => {
+    if (searchInput.current){
+       searchInput.current.focus();
+       if (activeSearchTerm) searchInput.current.value = activeSearchTerm 
+    }
+  });
 
   return (
     <section className="section search">
-      {/* <form className="search-form" onSubmit={handleSubmit}>
+      <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="search-input">Search books:</label>
           <input
@@ -40,7 +41,7 @@ const SearchForm = () => {
             ref={searchInput}
           />
         </div>
-      </form> */}
+      </form>
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import {  createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 
+
 export interface book{
     id:string;
     name:string | undefined;
@@ -13,15 +14,23 @@ export interface favoriteBooks{
     books: book[] | undefined;
 }
 
+const fetchFavoritesFromLocalStorage = ():favoriteBooks => {
+  let list = localStorage.getItem('favorites')
+  if (list) return JSON.parse(list)
+  
+  return {books:undefined}
+}
+
 const initialState: favoriteBooks = {
-    books: [
-        {id:"_fsElhcbSwIC",
-        name: "Python For Dummies",
-        image: "http://books.google.com/books/content?id=_fsElhcbSwIC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE70jFdwOYJJ8KEIZbMdFysK5xk2J8uV9tnL-7O_70HFnJYQehuzOaBTJYtJbYjLN9WTvTu1icl-0FHenbk7KjPQCRigA-6bapS1b8waWBa_3oCnuvqyihhOVULQrBLhpZkLJpC3H&source=gbs_api",
-        authors: ["Stef Maruch", "Aahz Maruch"],
-        description: "Python is one of the most powerful, easy-to-read programming languages around, but it does have its limitations. This general purpose, high-level language that can be extended and embedded is a smart option"
-    }
-    ]
+    // books: [
+    //     {id:"_fsElhcbSwIC",
+    //     name: "Python For Dummies",
+    //     image: "http://books.google.com/books/content?id=_fsElhcbSwIC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE70jFdwOYJJ8KEIZbMdFysK5xk2J8uV9tnL-7O_70HFnJYQehuzOaBTJYtJbYjLN9WTvTu1icl-0FHenbk7KjPQCRigA-6bapS1b8waWBa_3oCnuvqyihhOVULQrBLhpZkLJpC3H&source=gbs_api",
+    //     authors: ["Stef Maruch", "Aahz Maruch"],
+    //     description: "Python is one of the most powerful, easy-to-read programming languages around, but it does have its limitations. This general purpose, high-level language that can be extended and embedded is a smart option"
+    // }
+    // ]
+    books: fetchFavoritesFromLocalStorage().books
 }
 // export interface favoritesState {
 //   value: number;
@@ -42,7 +51,7 @@ export const favoritesSlice = createSlice({
     addFavorite: (state, action:PayloadAction<book>) => {
       state.books && state.books.push(action.payload);
     },
-    removeFromFavorite: (state, action) => {
+    removeFromFavorite: (state, action:PayloadAction<string>) => {
       if (state.books) {
         state.books = state.books.filter((e) => {
         return e.id !== action.payload
