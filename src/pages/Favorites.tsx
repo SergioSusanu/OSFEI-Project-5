@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
+import FavBookList from '../components/FavBookList'
 
-const Favorites = () => {
+const Favorites:FC = () => {
   return (
-    <div>Favorites</div>
+    <div><FavBookList /></div>
   )
 }
 

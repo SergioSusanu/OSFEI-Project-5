@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 
-const Navbar = () => {
+const Navbar:FC = () => {
   return (
     <nav className="navbar">
       <div className="nav-center">

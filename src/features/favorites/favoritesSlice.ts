@@ -1,27 +1,18 @@
 import {  createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { RootState } from '../../app/store';
+import { book, BookCollection } from '../../models/books';
 
 
-export interface book{
-    id:string;
-    name:string | undefined;
-    image:string | undefined;
-    description:string | undefined;
-    authors:string[] | [];
-}
 
-export interface favoriteBooks{
-    books: book[] | undefined;
-}
 
-const fetchFavoritesFromLocalStorage = ():favoriteBooks => {
+const fetchFavoritesFromLocalStorage = ():BookCollection => {
   let list = localStorage.getItem('favorites')
   if (list) return JSON.parse(list)
   
   return {books:undefined}
 }
 
-const initialState: favoriteBooks = {
+const initialState: BookCollection = {
     // books: [
     //     {id:"_fsElhcbSwIC",
     //     name: "Python For Dummies",

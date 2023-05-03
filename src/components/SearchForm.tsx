@@ -1,9 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, FC } from "react";
 import { setSearchTerm } from "../features/searchSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { RootState } from "../app/store";
 
-const SearchForm = () => {
+const SearchForm:FC = () => {
   const activeSearchTerm = useAppSelector((state:RootState)=>state.search.searchTerm)
   const dispatch = useAppDispatch()
   const searchInput = useRef<HTMLInputElement | null>(null)
