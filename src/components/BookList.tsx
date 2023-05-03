@@ -26,7 +26,7 @@ const BookList:FC = () => {
           const localBook:localBook = {
             id: book.id,
             title: book.volumeInfo.title?.substr(0, 50),
-            image: book.volumeInfo.imageLinks.thumbnail?.replace('zoom=1','zoom=2'),
+            image: book.volumeInfo.imageLinks?.thumbnail?.replace('zoom=1','zoom=2'),
             description: book.volumeInfo.description?.substr(0, 150),
             authors: book.volumeInfo.authors,
           };
