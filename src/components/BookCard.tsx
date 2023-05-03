@@ -1,12 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
+import { localBook } from "../models/books";
 
-//const book = ({id, title, image, description, authors}) => {
-const book = () => {
+const BookCard:FC = (book:localBook) => {
+
   return (
     <article className="book">
       <div className="img-container">
-        {/* <img src={image} alt={title}/>
+        <img src={image} alt={title}/>
       </div>
       <div className="book-footer">
         <h3>{title}</h3>
@@ -14,10 +15,10 @@ const book = () => {
          <p>{description}</p>
         <Link to={`/books/${id}`}>
           <button className="btn">Learn More</button>
-        </Link>  */}
+        </Link> 
       </div>
     </article>
   );
 };
 
-export default book;
+export default BookCard;

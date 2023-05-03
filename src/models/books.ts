@@ -1,14 +1,14 @@
 
-export interface book{
+export interface localBook{
     id:string;
-    name:string | undefined;
+    title:string | undefined;
     image:string | undefined;
     description:string | undefined;
-    authors:string[] | [];
+    authors:string[] | undefined;
 }
 
 export interface BookCollection{
-    books: book[] | undefined;
+    books: localBook[] | undefined;
 }
 
 export interface GoogleBook{
@@ -18,12 +18,13 @@ export interface GoogleBook{
         authors: string[] | undefined;
         imageLinks:{
             thumbnail:string | undefined
-        }
+        },
+        description:string | undefined;
     };
-    description:string | undefined;
+    
 
 }
 
 export interface GoogleBookCollection {
-    items: GoogleBook[] | []
+    items: GoogleBook[] | undefined
 }

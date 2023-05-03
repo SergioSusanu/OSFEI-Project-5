@@ -1,15 +1,14 @@
 import React, { FC } from "react";
 import BookCard from "./BookCard";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "../app/hooks";
 import { selectSearchTerm } from "../features/searchSlice";
 import { useGetBooksByNameQuery } from "../features/booksApi";
-import { book } from "../models/books";
+import { GoogleBook, localBook } from "../models/books";
 
 const BookList:FC = () => {
     const searchTerm = useAppSelector(selectSearchTerm)
   const {
-    data: books = [],
+    data: books,
     error,
     isLoading,
   } = useGetBooksByNameQuery(searchTerm);
@@ -23,11 +22,11 @@ const BookList:FC = () => {
       <h2 className="section-title">books</h2>
       <div className="books-center">
        { books.items && ( 
-        books.items.map((book:book) => {
-          const localBook = {
+        books.items.map((book:GoogleBook) => {
+          const localBook:localBook = {
             id: book.id,
-            title: book.volumeInfo.title.substr(0, 50),
-            image: book.volumeInfo.imageLinks.thumbnail.replace('zoom=1','zoom=2'),
+            title: book.volumeInfo.title?.substr(0, 50),
+            image: book.volumeInfo.imageLinks.thumbnail?.replace('zoom=1','zoom=2'),
             description: book.volumeInfo.description?.substr(0, 150),
             authors: book.volumeInfo.authors,
           };

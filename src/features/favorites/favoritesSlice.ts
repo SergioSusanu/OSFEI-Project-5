@@ -1,6 +1,6 @@
 import {  createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { book, BookCollection } from '../../models/books';
+import { localBook, BookCollection } from '../../models/books';
 
 
 
@@ -39,7 +39,7 @@ export const favoritesSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    addFavorite: (state, action:PayloadAction<book>) => {
+    addFavorite: (state, action:PayloadAction<localBook>) => {
       state.books && state.books.push(action.payload);
     },
     removeFromFavorite: (state, action:PayloadAction<string>) => {
