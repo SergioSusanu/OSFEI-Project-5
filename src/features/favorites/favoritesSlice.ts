@@ -3,14 +3,14 @@ import { RootState, AppThunk } from '../../app/store';
 
 export interface book{
     id:string;
-    name:string;
-    image:string;
-    description:string;
-    authors:string[];
+    name:string | undefined;
+    image:string | undefined;
+    description:string | undefined;
+    authors:string[] | [];
 }
 
 export interface favoriteBooks{
-    books: book[];
+    books: book[] | undefined;
 }
 
 const initialState: favoriteBooks = {
@@ -39,13 +39,15 @@ export const favoritesSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    addFavorite: (state, action) => {
-      state.books.push(action.payload);
+    addFavorite: (state, action:PayloadAction<book>) => {
+      state.books && state.books.push(action.payload);
     },
     removeFromFavorite: (state, action) => {
-      state.books = state.books.filter((e) => {
+      if (state.books) {
+        state.books = state.books.filter((e) => {
         return e.id !== action.payload
-      })  
+      })
+      }  
     }
    
     // Use the PayloadAction type to declare the contents of `action.payload`
