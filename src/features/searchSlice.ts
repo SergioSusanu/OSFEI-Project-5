@@ -2,7 +2,7 @@ import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from '../app/store';
 
 interface SearchTerm {
-  searchTerm: string | null
+  searchTerm: string;
 }
 
 const initialState:SearchTerm = {

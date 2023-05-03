@@ -3,7 +3,7 @@ import BookCard from "./BookCard";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../app/hooks";
 import { selectSearchTerm } from "../features/searchSlice";
-import { useGetBooksByNameQuery } from "../features/books";
+import { useGetBooksByNameQuery } from "../features/booksApi";
 import { book } from "../models/books";
 
 const BookList:FC = () => {
@@ -16,14 +16,14 @@ const BookList:FC = () => {
   
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Enter a term to start searching</p>
-  if (books.length === 0) return <p>No books found that match your search</p>;
+  if (!books) return <p>No books found that match your search</p>;
 
   return (
     <section className="section">
       <h2 className="section-title">books</h2>
       <div className="books-center">
-        
-        {books.items?.map((book:book) => {
+       { books.items && ( 
+        books.items.map((book:book) => {
           const localBook = {
             id: book.id,
             title: book.volumeInfo.title.substr(0, 50),
@@ -38,7 +38,8 @@ const BookList:FC = () => {
             />
           );
           
-        })}
+        }))
+      }
       </div>
     </section>
   );
