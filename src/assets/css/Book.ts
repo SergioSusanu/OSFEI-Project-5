@@ -15,7 +15,7 @@ const StylingWrapper=styled.div`
 }
 .book img {
   height: 20rem;
-  object-fit: none;
+  object-fit:cover;
   border-top-left-radius: var(--mainBorderRadius);
   border-top-right-radius: var(--mainBorderRadius);
 }
@@ -42,3 +42,5 @@ const StylingWrapper=styled.div`
 `
 
 export default StylingWrapper
+
+ 
