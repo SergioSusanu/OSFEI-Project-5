@@ -7,8 +7,8 @@ export interface localBook{
     authors:string[] | undefined;
 }
 
-export interface BookCollection{
-    books: localBook[] | undefined;
+export interface BookCollection {
+    books: localBook[];
 }
 
 export interface GoogleBook{

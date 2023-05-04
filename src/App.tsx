@@ -18,7 +18,9 @@ function App() {
     const favorites = useAppSelector(selectFavorites)
 
   useEffect(()=>{
-    favorites && localStorage.setItem('favorites', JSON.stringify(favorites))
+    if (favorites?.length !== 0 && typeof favorites !== 'undefined' ){
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
   },[favorites])
 
   return (

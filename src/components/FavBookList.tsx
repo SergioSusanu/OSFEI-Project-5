@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { useSelector } from 'react-redux';
 import BookCard from '../components/BookCard'
 import { useAppSelector } from '../app/hooks';
 import { selectFavorites } from '../features/favorites/favoritesSlice';

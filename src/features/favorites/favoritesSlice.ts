@@ -2,14 +2,25 @@ import {  createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { localBook, BookCollection } from '../../models/books';
 
-const fetchFavoritesFromLocalStorage = ():BookCollection => {
-  let list = localStorage.getItem('favorites')
-  if (list && typeof list !== 'undefined') return JSON.parse(list)
+const fetchFavoritesFromLocalStorage = () : BookCollection => {
+  const list = localStorage.getItem('favorites')
+  if (list) {
+    const favs:BookCollection = {
+      books: JSON.parse(list)
+    }
+    return favs
+  }
   
-  return {books:undefined}
+  const localInitialState:BookCollection = {
+    books: new Array<localBook>()
+  }
+  return localInitialState
 }
 
-const initialState: BookCollection = fetchFavoritesFromLocalStorage()
+const initialState:BookCollection = fetchFavoritesFromLocalStorage()
+// BookCollection = {
+//   books: new Array<localBook>()
+// }
 
 
 export const favoritesSlice = createSlice({
@@ -18,9 +29,8 @@ export const favoritesSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     addFavorite: (state, action:PayloadAction<localBook>) => {
-      if (typeof state.books === 'undefined'){
-        state.books = [action.payload]
-      } else state.books.push(action.payload);
+    
+     state.books.push(action.payload)
     },
     removeFromFavorite: (state, action:PayloadAction<string>) => {
       if (state.books) {
