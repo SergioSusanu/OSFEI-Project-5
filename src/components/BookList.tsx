@@ -1,9 +1,11 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import BookCard from "./BookCard";
 import { useAppSelector } from "../app/hooks";
 import { selectSearchTerm } from "../features/searchSlice";
 import { useGetBooksByNameQuery } from "../features/booksApi";
 import { GoogleBook, localBook } from "../models/books";
+import StylingWrapper from "../assets/css/BookList";
+
 
 const BookList:FC = () => {
   const searchTerm = useAppSelector(selectSearchTerm)
@@ -19,6 +21,7 @@ const BookList:FC = () => {
   if (!books) return <p>No books found that match your search</p>;
 
   return (
+    <StylingWrapper>
     <section className="section">
       <h2 className="section-title">books</h2>
       <div className="books-center">
@@ -42,6 +45,7 @@ const BookList:FC = () => {
       }
       </div>
     </section>
+    </StylingWrapper>
   );
 };
 

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { localBook } from "../models/books";
 import { Button } from "@mui/material";
 import FavoriteButton from "./FavoriteButton";
+import StylingWrapper from "../assets/css/Book";
+
 
 // interface for props
 interface BookCardProps {
@@ -14,6 +16,7 @@ const BookCard:FC<BookCardProps> = (props) => {
   const {id, image, title, authors, description} = props.book
 
   return (
+    <StylingWrapper>
     <article className="book">
        {image &&
         <div className="img-container">
@@ -30,6 +33,7 @@ const BookCard:FC<BookCardProps> = (props) => {
        <FavoriteButton book={props.book} />
       </div>
     </article>
+    </StylingWrapper>
   );
 };
 
