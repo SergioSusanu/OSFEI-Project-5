@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from '../app/store';
 
-interface SearchTerm {
+interface SearchModel {
   searchTerm: string;
+  startedSearching:boolean;
 }
 
-const initialState:SearchTerm = {
-  searchTerm:''
+const initialState:SearchModel = {
+  searchTerm:'',
+  startedSearching:false
 };
 
 export const searchSlice = createSlice({
@@ -15,6 +17,7 @@ export const searchSlice = createSlice({
   reducers: {
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload
+      state.startedSearching = true;
     },
   },
 });
