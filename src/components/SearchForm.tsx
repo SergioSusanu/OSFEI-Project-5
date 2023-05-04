@@ -2,6 +2,7 @@ import React, { useRef, useEffect, FC } from "react";
 import { setSearchTerm } from "../features/searchSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { RootState } from "../app/store";
+import StylingWrapper from "../assets/css/SearchForm";
 
 const SearchForm:FC = () => {
   const activeSearchTerm = useAppSelector((state:RootState)=>state.search.searchTerm)
@@ -30,6 +31,7 @@ const SearchForm:FC = () => {
   });
 
   return (
+    <StylingWrapper>
     <section className="section search">
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-control">
@@ -43,6 +45,7 @@ const SearchForm:FC = () => {
         </div>
       </form>
     </section>
+    </StylingWrapper>
   );
 };
 
