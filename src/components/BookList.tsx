@@ -11,7 +11,7 @@ const BookList:FC = () => {
   const {
     data: books,
     error,
-    isLoading,
+    isLoading
   } = useGetBooksByNameQuery(searchTerm);
   
   if (isLoading) return <p>Loading...</p>;

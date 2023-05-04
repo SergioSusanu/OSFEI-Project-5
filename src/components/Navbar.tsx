@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
+import star from '../assets/images/star.svg'
 
 const Navbar:FC = () => {
   return (

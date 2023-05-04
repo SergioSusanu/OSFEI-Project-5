@@ -24,7 +24,7 @@ const SearchForm:FC = () => {
 
   useEffect(() => {
     if (searchInput.current){
-       searchInput.current.focus();
+       //searchInput.current.focus();
        if (activeSearchTerm) searchInput.current.value = activeSearchTerm 
     }
   });

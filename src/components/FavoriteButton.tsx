@@ -3,6 +3,9 @@ import useCheckFavorite from '../features/favorites/useCheckFavorite';
 import { useAppDispatch } from '../app/hooks';
 import { addFavorite, removeFromFavorite } from '../features/favorites/favoritesSlice';
 import { localBook } from '../models/books';
+import StarIcon from '@mui/icons-material/Star';
+import { IconButton } from '@mui/material';
+
 
 // interface for props
 interface FavButtonProps {
@@ -22,12 +25,14 @@ const FavoriteButton:FC<FavButtonProps> = ({book}) => {
     setIsFavorite(!isFavorite);
   }
 
-  return (
-     <button className='btn'
-      onClick={handleFavButton}
-      >
-       {isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-     </button>
+  return (<div>
+   
+    
+     <IconButton aria-label="toggle favorite status for book" onClick={handleFavButton}>
+       <StarIcon color={isFavorite ? 'warning' : 'disabled'} fontSize='large'/>
+     </IconButton>
+  </div>
+  
   )
 }
 
