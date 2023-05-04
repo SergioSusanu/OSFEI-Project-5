@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { localBook } from '../models/books';
 import useCheckFavorite from '../features/favorites/useCheckFavorite';
 import FavoriteButton from '../components/FavoriteButton';
+import StylingWrapper from '../assets/css/SingleBook';
 
 const SingleBook:FC = () => {
   const cId = useParams().id || ''
@@ -20,18 +21,26 @@ const SingleBook:FC = () => {
         id:cId,
         title: data.volumeInfo?.title,
         image: data.volumeInfo?.imageLinks?.thumbnail?.replace('http','https').replace('zoom=1','zoom=2'),
-        description: data.volumeInfo?.description?.substr(0,350),
+        description: data.volumeInfo?.description?.substring(0,1500),
         authors: data.volumeInfo?.authors
       }
 
   return (
-    <div style={{padding:'30px'}}>
-      <h2>{book.title} </h2>
-      <img style={{width:'300px'}} src={book?.image} alt='' />
-      <h4>{book.authors?.toString()}</h4>
-      <p>{book.description}</p>
-      <FavoriteButton book={book} />
-    </div>
+    <StylingWrapper>
+      <main>
+        <div className="left">
+          <div><h2>{book.title}</h2></div>
+          <div><img src={book?.image} alt={book.title} /></div>
+          <div><h4>{book.authors?.toString()}</h4></div>
+        </div>
+        <div className="right">
+           <h2>Description:</h2>
+           <div><p>{book.description}</p></div>
+           <div><FavoriteButton book={book} /></div>
+        </div>
+     
+      </main>
+    </StylingWrapper>
   )
 }
 

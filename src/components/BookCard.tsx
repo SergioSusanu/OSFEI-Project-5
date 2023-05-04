@@ -18,11 +18,9 @@ const BookCard:FC<BookCardProps> = (props) => {
   return (
     <StylingWrapper>
     <article className="book">
-       {image &&
         <div className="img-container">
           <img src={image} alt={title}/>
         </div>
-       }
       <div className="book-footer">
         <h3>{title}</h3>
         <h4>{authors?.toString().substring(0,30)}</h4>
