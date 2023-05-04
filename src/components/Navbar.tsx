@@ -1,10 +1,12 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
-import star from '../assets/images/star.svg'
+import StylingWrapper from '../assets/css/NavBar'
+
 
 const Navbar:FC = () => {
   return (
+    <StylingWrapper>
     <nav className="navbar">
       <div className="nav-center">
         <Link to="/">
@@ -20,6 +22,7 @@ const Navbar:FC = () => {
         </ul>
       </div>
     </nav>
+    </StylingWrapper>
   )
 }
 

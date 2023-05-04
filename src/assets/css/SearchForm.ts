@@ -38,3 +38,11 @@ const StylingWrapper=styled.div`
 `
 
 export default StylingWrapper
+
+// import styled from "@emotion/styled"
+
+// const StylingWrapper=styled.div`
+
+// `
+
+// export default StylingWrapper

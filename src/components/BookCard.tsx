@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
+import React, { FC} from "react";
 import { Link } from "react-router-dom";
 import { localBook } from "../models/books";
-import useCheckFavorite from "../features/favorites/useCheckFavorite";
+import { Button } from "@mui/material";
 import FavoriteButton from "./FavoriteButton";
 
 // interface for props
@@ -25,7 +25,7 @@ const BookCard:FC<BookCardProps> = (props) => {
         <h4>{authors?.toString()}</h4>
          <p>{description}</p>
         <Link to={`/books/${id}`}>
-          <button className="btn">Learn More</button>
+          <Button variant="outlined">Learn More</Button>
         </Link> 
        <FavoriteButton book={props.book} />
       </div>
