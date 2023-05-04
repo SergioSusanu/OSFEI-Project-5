@@ -19,7 +19,7 @@ const SingleBook:FC = () => {
        {
         id:cId,
         title: data.volumeInfo?.title,
-        image: data.volumeInfo?.imageLinks?.thumbnail,
+        image: data.volumeInfo?.imageLinks?.thumbnail?.replace('http','https').replace('zoom=1','zoom=2'),
         description: data.volumeInfo?.description?.substr(0,350),
         authors: data.volumeInfo?.authors
       }
