@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { localBook } from "../models/books";
 import { Button } from "@mui/material";
 import FavoriteButton from "./FavoriteButton";
-import StylingWrapper from "../assets/css/Book";
+import StylingWrapper from "../assets/css/BookCard";
 
 
 // interface for props
@@ -25,12 +25,15 @@ const BookCard:FC<BookCardProps> = (props) => {
        }
       <div className="book-footer">
         <h3>{title}</h3>
-        <h4>{authors?.toString()}</h4>
+        <h4>{authors?.toString().substring(0,30)}</h4>
          <p>{description}</p>
-        <Link to={`/books/${id}`}>
-          <Button variant="outlined">Learn More</Button>
-        </Link> 
-       <FavoriteButton book={props.book} />
+         <div className="button-container">
+             <Link to={`/books/${id}`}>
+             <Button variant="outlined">Learn More</Button>
+            </Link> 
+            <FavoriteButton book={props.book} />
+         </div>
+       
       </div>
     </article>
     </StylingWrapper>

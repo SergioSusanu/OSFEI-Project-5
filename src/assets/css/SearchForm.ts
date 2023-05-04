@@ -13,18 +13,22 @@ const StylingWrapper=styled.div`
   margin: 0 auto;
   max-width: var(--maxWidth);
   background: var(--mainWhite);
-  padding: 2rem 2.5rem;
+  padding: 1rem 1.5rem;
   text-transform: capitalize;
   border-radius: var(--mainBorderRadius);
   box-shadow: var(--lightShadow);
 }
 
+.form-control{
+  display:flex;
+}
+
 .form-control label {
   display: block;
-  margin-bottom: 1.25rem;
+  font-size:26px;
   font-weight: bold;
-  letter-spacing: 0.25rem;
   color: var(--primaryColor);
+  min-width:200px;
 }
 .form-control input {
   width: 100%;
@@ -38,11 +42,3 @@ const StylingWrapper=styled.div`
 `
 
 export default StylingWrapper
-
-// import styled from "@emotion/styled"
-
-// const StylingWrapper=styled.div`
-
-// `
-
-// export default StylingWrapper

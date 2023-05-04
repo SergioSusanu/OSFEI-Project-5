@@ -8,16 +8,16 @@ const StylingWrapper=styled.div`
   font-size: 2rem;
   text-transform: capitalize;
   text-align: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 .books-center {
   width: var(--smallWidth);
   margin: 0 auto;
   max-width: var(--fullWidth);
   display: grid;
-  row-gap: 2rem;
-  column-gap: 2rem;
+  row-gap: 1rem;
+  column-gap: 1rem;
   /* align-items: start; */
 }
 @media screen and (max-width: 767px) {
@@ -40,7 +40,7 @@ const StylingWrapper=styled.div`
 
 @media screen and (min-width: 1200px) {
   .books-center {
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 `

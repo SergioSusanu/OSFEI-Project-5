@@ -5,7 +5,7 @@ import styled from "@emotion/styled"
 const StylingWrapper=styled.div`
 .navbar {
   background: var(--mainWhite);
-  height: 5rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   border-bottom: 2px solid var(--primaryColor);
