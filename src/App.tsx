@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 // import components
 import Navbar from "./components/Navbar";
-import { useSelector } from "react-redux";
 import Home from "./pages/Home";
 import SingleBook from "./pages/SingleBook";
 import Error from "./pages/Error";
 import Favorites from "./pages/Favorites";
 import { useAppSelector } from "./app/hooks";
 import { selectFavorites } from "./features/favorites/favoritesSlice";
-import { log } from "console";
-//import Favorites from './features/favorites/Favorites';
+import { ThemeProvider } from "@mui/material";
+import theme from "./assets/css/Theme";
 
 function App() {
 
@@ -24,7 +23,7 @@ function App() {
   },[favorites])
 
   return (
-   <div>
+   <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -34,7 +33,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
 
