@@ -68,4 +68,8 @@ img {
   display: block;
 }
 
+.center{
+  text-align: center;
+  margin-top: 10px;
+}
 

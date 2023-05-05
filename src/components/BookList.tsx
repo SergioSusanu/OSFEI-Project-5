@@ -16,9 +16,9 @@ const BookList:FC = () => {
     isLoading
   } = useGetBooksByNameQuery(searchTerm);
   
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Enter a term to start searching</p>
-  if (!books) return <p>No books found that match your search</p>;
+  if (isLoading) return <p className="center">Loading...</p>;
+  if (error) return <p className="center">Enter a term to start searching</p>
+  if (!books) return <p className="center">No books found that match your search</p>;
 
   return (
     <StylingWrapper>

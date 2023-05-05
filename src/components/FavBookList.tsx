@@ -7,14 +7,15 @@ import StylingWrapper from "../assets/css/FavList";
 const FavBookList:FC = () => {
   const books = useAppSelector(selectFavorites)
 
-  if (!books) return <p>No favorite books yet</p>
-
   return (
      <StylingWrapper>
     <section className="section">
       <h2 className="section-title">Favorite Books</h2>
       <div className="books-center">
-        {books.map((book) => {
+        {
+        books?.length === 0 ? 'Nothing yet...' 
+        :
+        books?.map((book) => {
           return <BookCard key={book.id} book={book} />;
         })}
       </div>
