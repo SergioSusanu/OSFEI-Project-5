@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {  GoogleBook, GoogleBookCollection } from "../models/books";
 
-const apiKey = 'AIzaSyCSBhChQeia_4vfZwtSh0_R20IT8hHioY8'
+
 // Define a service using a base URL and expected endpoints
 export const booksApi = createApi({
   reducerPath: "booksApi",
@@ -11,7 +11,7 @@ export const booksApi = createApi({
 
   endpoints: (builder) => ({
     getBooksByName: builder.query<GoogleBookCollection, string>({
-      query: (name) => `?q=${name}&key=${apiKey}`
+      query: (name) => `?q=${name}`
     }),
     getBookById: builder.query<GoogleBook, string>({
       query: (id) => `/${id}`,
