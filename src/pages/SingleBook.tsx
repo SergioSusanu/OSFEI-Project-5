@@ -4,7 +4,7 @@ import { addFavorite, removeFromFavorite, selectFavorites } from '../features/fa
 import { useGetBookByIdQuery } from '../features/booksApi';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { localBook } from '../models/books';
-import useCheckFavorite from '../features/favorites/useCheckFavorite';
+import parse from 'html-react-parser'
 import FavoriteButton from '../components/FavoriteButton';
 import StylingWrapper from '../assets/css/SingleBook';
 
@@ -31,12 +31,12 @@ const SingleBook:FC = () => {
         <div className="left">
           <div><h2>{book.title}</h2></div>
           <div><img src={book?.image} alt={book.title} /></div>
-          <div><h4>{book.authors?.toString()}</h4></div>
+          <div><h4>Authors: {book.authors?.toString()}</h4></div>
         </div>
         <div className="right">
            <h2>Description:</h2>
-           <div><p>{book.description}</p></div>
-           <div><FavoriteButton book={book} /></div>
+           <div>{book.description && parse(book.description)}</div>
+           <div><FavoriteButton book={book} buttonStyle={true} /></div>
         </div>
      
       </main>

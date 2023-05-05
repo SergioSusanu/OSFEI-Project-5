@@ -6,7 +6,7 @@ const StylingWrapper=styled.div`
 main{
     display:flex;
     flex-direction:row;
-    gap:10px;
+    gap:50px;
     justify-content:center;
     margin:40px;    
 }
@@ -30,6 +30,11 @@ img{
 .book-header{
     display:flex;
     align-items:center;
+}
+
+h4{
+    max-width:400px;
+    margin:0px auto;
 }
 
 `
