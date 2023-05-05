@@ -43,7 +43,11 @@ h4{
     margin:0px auto;
 }
 
-
+@media (max-width:768px){
+    main {
+         flex-direction:column;
+    }
+}
 
 `
 
