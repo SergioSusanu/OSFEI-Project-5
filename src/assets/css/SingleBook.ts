@@ -22,6 +22,12 @@ div.left{
     text-align:center;
 }
 
+div.right{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
 img{
     max-width:300px;
     margin:0px auto;

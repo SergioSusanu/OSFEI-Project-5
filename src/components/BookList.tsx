@@ -29,9 +29,9 @@ const BookList:FC = () => {
         books.items.map((book:GoogleBook) => {
           const localBook:localBook = {
             id: book.id,
-            title: book.volumeInfo.title?.substring(0, 50),
+            title: book.volumeInfo.title,
             image: book.volumeInfo.imageLinks?.thumbnail?.replace('zoom=1','zoom=2').replace('http','https'),
-            description: book.volumeInfo.description?.substring(0, 155).concat('...'),
+            description: book.volumeInfo.description,
             authors: book.volumeInfo.authors,
           };
           return (

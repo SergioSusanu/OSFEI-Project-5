@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import BookCard from '../components/BookCard'
 import { useAppSelector } from '../app/hooks';
 import { selectFavorites } from '../features/favorites/favoritesSlice';
+import StylingWrapper from "../assets/css/FavList";
 
 const FavBookList:FC = () => {
   const books = useAppSelector(selectFavorites)
@@ -9,6 +10,7 @@ const FavBookList:FC = () => {
   if (!books) return <p>No favorite books yet</p>
 
   return (
+     <StylingWrapper>
     <section className="section">
       <h2 className="section-title">Favorite Books</h2>
       <div className="books-center">
@@ -17,6 +19,7 @@ const FavBookList:FC = () => {
         })}
       </div>
     </section>
+    </StylingWrapper>
   );
 }
 
